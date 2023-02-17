@@ -1,0 +1,87 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+ul,
+ol {
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h5,
+h6 {
+  margin: 0;
+  font-weight: normal;
+}
+
+body,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd,
+figure,
+blockquote {
+  margin: 0;
+}
+
+ul li,
+ol li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: 0;
+}
+
+button {
+  appearance: none;
+  border: 0;
+  font: inherit;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+  outline: 0;
+  border: 0;
+  appearance: 0;
+}
+
+label {
+  display: block;
+}
+
+address {
+  font-style: normal;
+}
