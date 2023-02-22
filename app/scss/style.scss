@@ -3,4 +3,349 @@
 @import "reset";
 @import "global";
 
+.header {
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo {
+  margin: 60px 0;
+  transition: box-shadow 0.3s linear, opacity 0.3s linear;
+  &:focus {
+    box-shadow: 0px 0px 0px 2px rgba($orange, 0.7);
+    border-radius: 5px;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    box-shadow: none;
+    opacity: 0.5;
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 57px;
+
+  &__list {
+    display: flex;
+    gap: 40px;
+  }
+
+  &__list-link {
+    letter-spacing: 0.01em;
+    &--active {
+      color: $orange;
+    }
+  }
+}
+
+.user-nav {
+  display: flex;
+  gap: 25px;
+  &__btn {
+    display: flex;
+    outline: 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: box-shadow 0.3s linear, background-color 0.3s linear,
+      color 0.3s linear;
+    &::before {
+      content: "";
+      min-width: 21px;
+      height: 21px;
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      background-color: $search;
+    }
+    &:focus {
+      background-color: rgba($orange, 0.1);
+      box-shadow: 0px 0px 0px 2px rgba($orange, 0.7);
+    }
+    &:hover {
+      background-color: $orange;
+    }
+    &:hover::before {
+      background-color: $white;
+    }
+    &:hover .user-nav__num {
+      background-color: $white;
+      color: $orange;
+    }
+    &:active {
+      background-color: $active;
+    }
+    &:active::before {
+      background-color: $search;
+    }
+    &:active .user-nav__num {
+      background-color: $orange;
+      color: $white;
+    }
+    &--search {
+      &::before {
+        mask-image: url("../images/sprite.svg#icon-search");
+      }
+    }
+
+    &--basket {
+      position: relative;
+      &::before {
+        mask-image: url("../images/sprite.svg#icon-cart");
+      }
+    }
+  }
+
+  &__num {
+    position: absolute;
+    font-size: 10px;
+    line-height: 14px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: $orange;
+    color: $white;
+    top: 6px;
+    right: 2px;
+  }
+}
+
+.delivery {
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__cart {
+    max-width: 476px;
+  }
+
+  &__text-fast {
+    margin-bottom: 20px;
+    @extend %Rubik-500;
+    font-size: calc(40px + (66 - 40) * ((100vw - 375px) / (1920 - 375)));
+    text-transform: uppercase;
+    color: $search;
+  }
+
+  &__text-min {
+    color: $orange;
+  }
+
+  &__text-service {
+    font-size: calc(16px + (20 - 16) * ((100vw - 375px) / (1920 - 375)));
+    margin-bottom: 20px;
+  }
+
+  &__order {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  }
+
+  &__order-btn {
+    padding: 12px 32px;
+    transition: box-shadow 0.3s linear, background-color 0.3s linear,
+      color 0.3s linear;
+    &:focus,
+    &:hover,
+    &:active {
+      color: $orange;
+    }
+
+    &:focus {
+      background-color: rgba($orange, 0.1);
+      box-shadow: 0px 0px 0px 2px rgba($orange, 0.7);
+    }
+    &:hover {
+      color: $orange;
+      background-color: rgba($white, 0.1);
+      box-shadow: 0px 5px 12px rgba($orange, 0.2),
+        0px 0px 0px 2px rgba($orange, 0.7);
+    }
+    &:active {
+      background-color: rgba($orange, 0.1);
+    }
+  }
+
+  &__order-more {
+    font-size: 18px;
+    line-height: 1.5;
+    color: $search;
+    text-decoration-line: underline;
+    transition: text-decoration 0.3s linear, box-shadow 0.3s linear,
+      color 0.3s linear;
+    &:focus,
+    &:hover,
+    &:active {
+      text-decoration: transparent;
+    }
+  }
+
+  &__img {
+    background-image: url("../images/scooter_guy.png");
+    height: 660px;
+    max-width: 560px;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.popular {
+  &__category-items {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 52px 45px;
+    gap: 20px;
+  }
+
+  &__category-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 32px;
+    background-color: $white;
+    font-size: calc(14px + (20 - 14) * ((100vw - 375px) / (1920 - 375)));
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px 1px $border;
+    transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out;
+
+    &::before {
+      content: "";
+      width: 44px;
+      height: 44px;
+      mask-image: url("../images/sprite.svg#icon-category-burger");
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      background-color: $search;
+      transition: background-color 0.3s ease-in-out;
+    }
+    &:focus {
+      box-shadow: 0px 0px 0px 2px rgba($orange, 0.7);
+    }
+    &:hover {
+      color: $orange;
+      background-color: rgba($orange, 0.1);
+      box-shadow: 0px 0px 0px 2px rgba($orange, 0.7);
+    }
+    &:hover::before {
+      background-color: $orange;
+    }
+    &:active {
+      color: $search;
+      background-color: $white;
+      box-shadow: inset 0px -5px 12px rgba($orange, 0.2);
+    }
+    &:active::before {
+      background-color: $search;
+    }
+
+    &--active {
+      background-color: $orange;
+      color: $white;
+      cursor: pointer;
+      &::before {
+        background-color: $white;
+      }
+    }
+  }
+
+  &--pizza {
+    &::before {
+      content: "";
+      mask-image: url("../images/sprite.svg#icon-category-pizza");
+    }
+  }
+
+  &--sandvich {
+    &::before {
+      content: "";
+      mask-image: url("../images/sprite.svg#icon-category-sandvich");
+    }
+  }
+
+  &--asia {
+    &::before {
+      content: "";
+      mask-image: url("../images/sprite.svg#icon-category-asia");
+    }
+  }
+
+  &--dish {
+    &::before {
+      content: "";
+      mask-image: url("../images/sprite.svg#icon-category-dish");
+    }
+  }
+}
+
+.burgers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 30px;
+  margin-bottom: 60px;
+}
+
+.burger-card {
+  padding: 20px 15px;
+  background-color: $white;
+  text-align: center;
+  box-shadow: 0px 0px 0px 1px $border;
+  border-radius: 5px;
+  max-width: 210px;
+  height: 299px;
+
+  &__title,
+  &__price {
+    margin-bottom: 10px;
+  }
+
+  &__img {
+    margin: 0 auto 10px;
+  }
+
+  &__title {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 28px;
+    &--salad {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__price {
+    display: block;
+    color: $search;
+    font-size: 15px;
+    @extend %Rubik-500;
+    line-height: 1.4;
+  }
+
+  &__btn {
+    padding: 7px 14px;
+    font-size: 14px;
+  }
+}
+
+.show__more {
+  text-decoration-line: underline;
+  display: table;
+  margin: 0 auto;
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
 @import "media";
