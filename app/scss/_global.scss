@@ -6,6 +6,26 @@ body {
   background-color: $background;
 }
 
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 120px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -17,16 +37,6 @@ body {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
-}
-
-.container {
-  max-width: 1200px;
-  padding: 0 15px;
-  margin: 0 auto;
-}
-
-.section {
-  margin-bottom: 120px;
 }
 
 .title {
@@ -56,8 +66,39 @@ body {
 }
 
 .btn {
+  outline: 0;
   border-radius: 6px;
   background-color: $orange;
   color: $white;
   cursor: pointer;
+  transition: box-shadow 0.3s linear, background-color 0.3s linear,
+    color 0.3s linear;
+  &:focus,
+  &:hover,
+  &:active {
+    color: $orange;
+  }
+  &:focus {
+    background-color: rgba($orange, 0.1);
+    box-shadow: 0px 0px 0px 2px rgba($orange, 0.7);
+  }
+  &:hover {
+    color: $orange;
+    background-color: rgba($white, 0.1);
+    box-shadow: 0px 5px 12px rgba($orange, 0.2),
+      0px 0px 0px 2px rgba($orange, 0.7);
+  }
+  &:active {
+    background-color: rgba($orange, 0.1);
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  ::before {
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+  }
 }

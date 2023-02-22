@@ -30,7 +30,7 @@
 .menu {
   display: flex;
   align-items: center;
-  gap: 57px;
+  gap: 55px;
 
   &__list {
     display: flex;
@@ -38,7 +38,6 @@
   }
 
   &__list-link {
-    letter-spacing: 0.01em;
     &--active {
       color: $orange;
     }
@@ -47,7 +46,7 @@
 
 .user-nav {
   display: flex;
-  gap: 25px;
+  gap: 15px;
   &__btn {
     display: flex;
     outline: 0;
@@ -126,6 +125,7 @@
 
   &__cart {
     max-width: 476px;
+    min-height: 349px;
   }
 
   &__text-fast {
@@ -138,11 +138,14 @@
 
   &__text-min {
     color: $orange;
+    display: block;
   }
 
   &__text-service {
     font-size: calc(16px + (20 - 16) * ((100vw - 375px) / (1920 - 375)));
     margin-bottom: 20px;
+    max-width: 450px;
+    line-height: 1.5;
   }
 
   &__order {
@@ -153,32 +156,10 @@
 
   &__order-btn {
     padding: 12px 32px;
-    transition: box-shadow 0.3s linear, background-color 0.3s linear,
-      color 0.3s linear;
-    &:focus,
-    &:hover,
-    &:active {
-      color: $orange;
-    }
-
-    &:focus {
-      background-color: rgba($orange, 0.1);
-      box-shadow: 0px 0px 0px 2px rgba($orange, 0.7);
-    }
-    &:hover {
-      color: $orange;
-      background-color: rgba($white, 0.1);
-      box-shadow: 0px 5px 12px rgba($orange, 0.2),
-        0px 0px 0px 2px rgba($orange, 0.7);
-    }
-    &:active {
-      background-color: rgba($orange, 0.1);
-    }
   }
 
   &__order-more {
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 20px;
     color: $search;
     text-decoration-line: underline;
     transition: text-decoration 0.3s linear, box-shadow 0.3s linear,
@@ -209,8 +190,6 @@
   }
 
   &__category-btn {
-    display: flex;
-    align-items: center;
     gap: 10px;
     padding: 13px 32px;
     background-color: $white;
@@ -225,9 +204,6 @@
       width: 44px;
       height: 44px;
       mask-image: url("../images/sprite.svg#icon-category-burger");
-      mask-size: contain;
-      mask-position: center;
-      mask-repeat: no-repeat;
       background-color: $search;
       transition: background-color 0.3s ease-in-out;
     }
@@ -259,33 +235,32 @@
         background-color: $white;
       }
     }
-  }
-
-  &--pizza {
-    &::before {
-      content: "";
-      mask-image: url("../images/sprite.svg#icon-category-pizza");
+    &--pizza {
+      &::before {
+        content: "";
+        mask-image: url("../images/sprite.svg#icon-category-pizza");
+      }
     }
-  }
 
-  &--sandvich {
-    &::before {
-      content: "";
-      mask-image: url("../images/sprite.svg#icon-category-sandvich");
+    &--sandvich {
+      &::before {
+        content: "";
+        mask-image: url("../images/sprite.svg#icon-category-sandvich");
+      }
     }
-  }
 
-  &--asia {
-    &::before {
-      content: "";
-      mask-image: url("../images/sprite.svg#icon-category-asia");
+    &--asia {
+      &::before {
+        content: "";
+        mask-image: url("../images/sprite.svg#icon-category-asia");
+      }
     }
-  }
 
-  &--dish {
-    &::before {
-      content: "";
-      mask-image: url("../images/sprite.svg#icon-category-dish");
+    &--dish {
+      &::before {
+        content: "";
+        mask-image: url("../images/sprite.svg#icon-category-dish");
+      }
     }
   }
 }
@@ -339,12 +314,174 @@
 }
 
 .show__more {
+  font-size: 20px;
   text-decoration-line: underline;
   display: table;
   margin: 0 auto;
   &:hover,
   &:active {
     text-decoration: none;
+  }
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  &__item {
+  }
+
+  &__form {
+    margin-top: 30px;
+    max-width: 200px;
+    font-size: 14px;
+  }
+
+  &__form-input {
+    padding: 13px 15px;
+    width: 100%;
+    margin-bottom: 12px;
+    box-shadow: 0px 0px 0px 1px $grey;
+    border-radius: 5px;
+    transition: box-shadow 0.3s linear;
+    &::placeholder {
+      transition: color 0.3s linear;
+      color: $grey;
+      opacity: 0.9;
+    }
+    &:hover::placeholder {
+      color: $search;
+    }
+
+    &:focus {
+      box-shadow: 0px 0px 0px 2px $orange;
+    }
+  }
+
+  &__form-btn {
+    @extend %Rubik-500;
+    gap: 20px;
+    padding: 13px 37px;
+    &::before {
+      content: "";
+      width: 16px;
+      height: 15px;
+      mask-image: url("../images/sprite.svg#icon-telegram");
+      background-color: $white;
+    }
+    &:focus::before,
+    &:hover::before,
+    &:active::before {
+      background-color: $orange;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    max-width: 490px;
+    width: 100%;
+    margin-right: 151px;
+  }
+
+  &__items {
+    display: grid;
+    gap: 20px;
+  }
+
+  &__info {
+  }
+
+  &__link {
+    letter-spacing: 0.01em;
+  }
+
+  &__contacts {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 60px;
+  }
+
+  &__contacts-item {
+    font-size: 16px;
+    line-height: 32px;
+  }
+  &__contacts-link {
+    gap: 7px;
+    &:before {
+      content: "";
+      width: 24px;
+      height: 24px;
+      background-color: $dark;
+    }
+    &--address::before {
+      content: "";
+      mask-image: url("../images/sprite.svg#icon-location");
+    }
+
+    &--tel::before {
+      content: "";
+      mask-image: url("../images/sprite.svg#icon-call");
+    }
+    &--email::before {
+      content: "";
+      mask-image: url("../images/sprite.svg#icon-message");
+    }
+  }
+
+  &__contacts-social {
+  }
+}
+
+.social {
+  display: flex;
+  gap: 13px;
+  &__item {
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 39px;
+    height: 39px;
+    background-color: $border;
+    border-radius: 50%;
+    transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    &:focus {
+      box-shadow: 0px 0px 0px 2px rgba($orange, 0.7);
+      background-color: $active;
+    }
+    &:hover {
+      background-color: $orange;
+    }
+    &:active {
+      background-color: $active;
+    }
+  }
+
+  &__img {
+    width: 19.5px;
+    height: 19.5px;
+    background-repeat: no-repeat;
+    transition: filter 0.3s ease-in-out3;
+    &:hover {
+      filter: invert(100%) sepia(0%) saturate(7493%) hue-rotate(107deg)
+        brightness(106%) contrast(98%);
+    }
+    &:active {
+      filter: none;
+    }
+  }
+}
+
+.footer-bottom {
+  &__copy {
+    text-align: center;
+    padding: 30px 0;
+    font-size: 14px;
+    line-height: 100%;
+    color: $white;
+    background-color: $search;
   }
 }
 
