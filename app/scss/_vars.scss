@@ -21,3 +21,8 @@ $grey: #c2c2c2;
   font-family: "Rubik-Medium";
   font-weight: 500;
 }
+
+@mixin pseudo($display: block, $content: "") {
+  content: $content;
+  display: $display;
+}
