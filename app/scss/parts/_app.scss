@@ -1,0 +1,41 @@
+.app {
+  min-width: 570px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right calc((100vw - 1170px) / 2) center;
+}
+
+.app-mob {
+  max-width: 430px;
+  height: 299px;
+
+  &__title {
+    text-align: start;
+    margin-bottom: 45px;
+  }
+
+  &__text {
+    @include fz(20, 14);
+    line-height: 1.5;
+    opacity: 0.9;
+    margin-bottom: 30px;
+  }
+
+  &__apple,
+  &__google {
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+  }
+
+  &__apple {
+    margin-right: 30px;
+  }
+
+  &__google {
+    width: 135px;
+  }
+}

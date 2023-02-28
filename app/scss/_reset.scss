@@ -27,6 +27,7 @@ p,
 ul,
 ol,
 li,
+body,
 figure,
 figcaption,
 blockquote,
@@ -37,9 +38,14 @@ blockquote {
   margin: 0;
 }
 
-ul li,
-ol li {
-  list-style: none;
+ul,
+ol {
+  padding: 0;
+  list-style-type: none;
+}
+
+label {
+  display: block;
 }
 
 img {
@@ -51,35 +57,21 @@ input,
 button,
 textarea,
 select {
+  appearance: none;
+  outline: 0;
+  border: 0;
   font: inherit;
+  padding: 0;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  outline: 0;
 }
 
 button {
-  appearance: none;
-  border: 0;
-  font: inherit;
+  cursor: pointer;
   background-color: transparent;
-  padding: 0;
-  color: inherit;
-}
-
-input,
-textarea {
-  font: inherit;
-  color: inherit;
-  outline: 0;
-  border: 0;
-  appearance: 0;
-}
-
-label {
-  display: block;
 }
 
 address {
