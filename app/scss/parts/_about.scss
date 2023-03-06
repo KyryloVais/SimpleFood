@@ -1,14 +1,20 @@
 .about {
-  min-height: 585px;
+  min-height: size(585, 462);
   display: flex;
   align-items: center;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: left calc((100vw - 1030px) / 2) center;
 
+  @include mq(desktop) {
+    background-position: left 12px center;
+  }
+
   &__content {
-    margin: 0 70px 0 auto;
+    margin: 0 size(70, 0) 0 auto;
+    padding: 23px 0;
     max-width: 470px;
+    background-color: rgba($c-white, 0.85);
   }
 
   &__title {
@@ -21,35 +27,39 @@
     line-height: 1.5;
     opacity: 0.9;
     margin-bottom: 30px;
+    @include line-clamp(3);
+
+    @include mq(phone) {
+      font-size: 18px;
+      margin-bottom: 20px;
+      @include line-clamp(4);
+    }
   }
 
   &__items {
     display: grid;
-    gap: 18px;
+    gap: 20px;
     margin-bottom: 30px;
+
+    @include mq(phone) {
+      gap: 15px;
+      margin-bottom: 20px;
+    }
   }
 
   &__item {
     justify-content: flex-start;
     @include fz(24, 18);
     color: $c-darkBlue-900;
-    gap: 30px;
+    gap: size(30, 10);
+    line-height: 1.5;
     &::before {
       width: 34px;
       height: 34px;
     }
   }
-}
 
-// .icons {
-//   &::before {
-//     content: "";
-//     width: 34px;
-//     height: 34px;
-//     mask-image: url("../images/sprite.svg#icon-timer");
-//     background-color: $c-orange-900;
-//     mask-repeat: no-repeat;
-//     mask-size: contain;
-//     mask-position: center;
-//   }
-// }
+  &__btn {
+    padding: 12px 32px;
+  }
+}

@@ -13,7 +13,10 @@ body {
 
 .main {
   flex-grow: 1;
-  padding-top: 159px;
+  padding-top: size(159, 72);
+  @include mq(phone) {
+    // padding-top: 72px;
+  }
 }
 
 .container {
@@ -167,6 +170,11 @@ body {
   outline: 2px solid transparent;
   border-radius: 5px;
   transition: outline-color 0.3s linear, opacity 0.3s linear;
+  max-width: size(200, 115);
+
+  @include mq("tablet") {
+    margin-right: auto;
+  }
 
   &:focus {
     outline-color: rgba($c-orange-900, 0.7);
@@ -223,6 +231,11 @@ body {
   transition: color 0.3s linear, outline-color 0.3s linear,
     background-color 0.3s linear, bop-shadow 0.3s linear;
   appearance: none;
+
+  @include mq(phone) {
+    padding: 8px 24px;
+    font-size: 14px;
+  }
   &:focus {
     background-color: rgba($c-orange-900, 0.1);
     color: $c-orange-900;
@@ -254,7 +267,7 @@ body {
   @include fz(36, 24);
   font-weight: 500;
   color: $c-darkBlue-900;
-  margin-bottom: 60px;
+  margin-bottom: size(60, 28);
   text-align: center;
 }
 
@@ -281,6 +294,7 @@ body {
   text-decoration: underline;
   transition: outline-color 0.3s linear, color 0.3s linear,
     text-shadow 0.3s linear;
+
   &:focus {
     outline-color: rgba($c-orange-900, 0.7);
   }
@@ -293,6 +307,12 @@ body {
     text-shadow: 2px 2px 5px rgba($c-dark, 0.5);
     outline-color: transparent;
   }
+
+  &--hero {
+    @include mq(phone) {
+      font-size: 16px;
+    }
+  }
 }
 
 .text-orange {
@@ -300,7 +320,7 @@ body {
 }
 
 .mb-120 {
-  margin-bottom: 120px;
+  margin-bottom: size(120, 40);
 }
 
 .hide {
@@ -316,4 +336,19 @@ body {
 .show {
   opacity: 1;
   transition: opacity 1s linear;
+}
+
+.lock {
+  overflow: hidden;
+  position: relative;
+}
+
+.lock::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }

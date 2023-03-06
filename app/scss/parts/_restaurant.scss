@@ -1,22 +1,42 @@
 .restaurant {
+  @include mq(tablet) {
+    margin-bottom: 30px;
+  }
   &__list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    @include mq(desktop) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include mq(tablet) {
+      display: none;
+    }
   }
 }
 
 .rest-card {
+  overflow: hidden;
   max-width: 370px;
-  height: 419px;
-  background-repeat: no-repeat;
-  padding: 315px 20px 20px;
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   transition: box-shadow 0.3s linear;
 
+  @include mq(desktop) {
+    min-width: 345px;
+    margin: 0 auto;
+  }
+
+  @include mq(tablet) {
+    margin-bottom: 30px;
+  }
+
   &:hover {
     box-shadow: 0px 3px 15px rgba($c-orange-900, 0.5);
+  }
+
+  &__content {
+    padding: 15px 20px 20px 20px;
   }
 
   &__title {
@@ -32,20 +52,29 @@
 
   &__time {
     display: flex;
-    gap: 10px;
     font-size: 18px;
     font-weight: 300;
     opacity: 0.9;
     line-height: 1.5;
+    &::before {
+      margin-right: 10px;
+      min-width: 22px;
+      height: 22px;
+    }
   }
 
   &__btn {
+    min-width: 80px;
     display: flex;
-    display: inline-block;
     padding: 11px 33px;
     border-radius: 20px;
     background-color: $c-orange-900;
     transition: padding 0.3s linear, background-color 0.3s linear;
+
+    @include mq(tablet) {
+      min-width: 14px;
+    }
+
     &::before {
       display: block;
       min-width: 14px;

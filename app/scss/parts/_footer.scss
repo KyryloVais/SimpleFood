@@ -2,22 +2,53 @@
   &__content {
     display: flex;
     flex-wrap: wrap;
-    gap: 70px;
+    gap: size(70, 30);
     margin-bottom: 60px;
+    @include mq(tablet-2) {
+      justify-content: center;
+      margin-bottom: 54px;
+    }
+
+    @include mq(phone) {
+      flex-direction: column;
+    }
+  }
+
+  &__subscription {
+    @include mq(tablet-2) {
+      order: 1;
+      margin-right: 54px;
+    }
+  }
+
+  &__nav {
+    @include mq(tablet-2) {
+      order: 3;
+    }
   }
 
   &__logo {
     margin-bottom: 30px;
+    max-width: 200px;
   }
 
-  &__menu {
+  &__info {
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-auto-flow: column;
     gap: 20px 90px;
 
-    .menu__item {
+    @include mq(tablet-2) {
+    }
+
+    .info__item {
+      line-height: 23px;
+      font-size: 18px;
+      order: -1;
       grid-column: 3;
+      @include mq(phone) {
+        grid-column: 1;
+      }
 
       &:nth-child(-n + 4) {
         grid-column: 1;
@@ -25,6 +56,9 @@
 
       &:nth-child(n + 5):nth-child(-n + 8) {
         grid-column: 2;
+        @include mq(phone) {
+          grid-column: 1;
+        }
       }
     }
   }
@@ -32,6 +66,11 @@
   &__contacts {
     margin-left: auto;
     margin-right: 80px;
+
+    @include mq(tablet-2) {
+      margin: 0;
+      order: 2;
+    }
   }
 
   &__bottom {
@@ -41,6 +80,9 @@
     background-color: $c-darkBlue-900;
     padding: 30px;
     text-align: center;
+    @include mq(phone) {
+      padding: 20px;
+    }
   }
 }
 

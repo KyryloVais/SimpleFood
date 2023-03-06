@@ -15,3 +15,58 @@
     @content;
   }
 }
+
+@mixin line-clamp($lines: 1) {
+  @if $lines <=1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+  }
+}
+
+@function size($max, $min, $wmax: 1920, $wmin: 375) {
+  $size: calc(
+    #{$min}px + (#{$max} - #{$min}) *
+      ((100vw - #{$wmin}px) / (#{$wmax} - #{$wmin}))
+  );
+  @return $size;
+}
+
+@mixin adaptive-image($width, $height) {
+  position: relative;
+  width: 100%;
+  padding-bottom: calc(($height / $width) * 100%);
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+$breakpoints: (
+  "phone": 576px,
+  "tablet": 768px,
+  "tablet-2": 992px,
+  "desktop": 1200px,
+);
+@mixin mq($width, $type: max) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}

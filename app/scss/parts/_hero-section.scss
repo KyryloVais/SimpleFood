@@ -1,12 +1,26 @@
-$rightPos: calc((100vw - 1170px) / 2);
+$rightPos: calc((100vw - size(1170, 375)) / 2);
 
 .hero {
-  min-height: 660px;
+  min-height: size(660, 300);
   display: flex;
   align-items: center;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right $rightPos center;
+
+  @include mq(tablet) {
+    background-color: rgba($c-white, 0.85);
+  }
+
+  @include mq(phone) {
+    background-position-x: 109px;
+  }
+
+  &__contant {
+    max-width: 476px;
+    background-color: rgba($c-white, 0.85);
+    padding: 25px 0;
+  }
 
   &__title {
     max-width: 480px;
@@ -25,8 +39,9 @@ $rightPos: calc((100vw - 1170px) / 2);
     max-width: 450px;
     line-height: 1.5;
     margin-bottom: 20px;
-    font-size: 20px;
-    // @include line-clamp(4);
+    font-size: 16px;
+    @include fz(20, 16);
+    @include line-clamp(4);
   }
 
   &__actions {

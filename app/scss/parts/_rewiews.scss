@@ -1,44 +1,62 @@
 .reviews {
-  &__items {
-    padding: 0 90px;
+  @include mq(phone) {
+    height: 427px;
   }
-
-  &__item {
-    max-width: 990px;
-    margin: 0 auto;
-  }
-
   &__content {
+    max-width: 990px;
+    padding: 0 size(90, 0);
     display: flex;
+    justify-content: space-between;
     gap: 40px;
     align-items: center;
     margin-bottom: 30px;
+
+    @include mq(tablet) {
+      flex-direction: column;
+      gap: 19px;
+    }
   }
 
   &__img {
     border-radius: 50%;
+    max-width: size(300, 100);
+    width: 100%;
+    height: size(300, 100);
+    flex-basis: 100px;
+    object-fit: contain;
   }
 
   &__right {
     max-width: 650px;
-    padding: 0 40px;
+    height: 239px;
+    flex-basis: 320px;
+    flex-grow: 1;
+    width: 100%;
+
+    @include mq(tablet) {
+      flex-basis: 189px;
+    }
   }
 
   &__text {
-    max-width: 570px;
-    width: 100%;
     position: relative;
+    max-width: 570px;
+    padding: 10px 40px;
     font-style: italic;
-    @include fz(20, 14);
     line-height: 1.5;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    @include fz(20, 14);
+    @include line-clamp(8);
+
+    @include mq(tablet) {
+      margin-bottom: 10px;
+    }
 
     &::after,
     &::before {
       position: absolute;
       content: "";
-      display: inline-block;
-      min-width: 24px;
+      width: 24px;
       height: 24px;
       mask-repeat: no-repeat;
       mask-size: contain;
@@ -48,17 +66,25 @@
 
     &::after {
       mask-image: url("../images/sprite.svg#icon-quote-close");
-      right: -39px;
-      bottom: -6px;
+      right: 0;
+      @include mq(tablet) {
+        right: 6px;
+        bottom: 18px;
+      }
     }
 
     &::before {
       mask-image: url("../images/sprite.svg#icon-quote-open");
-      left: -41px;
+      left: 0;
+      @include mq(tablet) {
+        left: 6px;
+        top: 0;
+      }
     }
   }
 
   &__name {
+    padding: 0 40px;
     font-weight: 500;
     @include fz(20, 16);
     color: $c-orange-900;
@@ -66,119 +92,134 @@
   }
 
   &__span {
+    font-weight: 400;
     font-size: 14px;
     color: $c-dark;
     margin-top: 15px;
+    @include mq(tablet) {
+      margin-top: 10px;
+    }
   }
-}
 
-.slick-dots {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  height: 34px;
+  &__actions {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 23px;
 
-  li {
-    button {
-      font-size: 0;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background-color: $c-gray;
-      transition: box-shadow 0.3s linear, background-color 0.3s linear;
+    @include mq(phone) {
+      position: relative;
+      z-index: 1;
 
-      &:focus {
-        box-shadow: 0px 0px 0px 2px $c-orange-900;
-      }
+      top: -357px;
+      gap: 200px;
+    }
+  }
 
-      &:hover {
-        box-shadow: 0px 0px 0px 2px rgba($c-orange-900, 0.5);
-        background-color: $c-orange-50;
+  &__btn {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 2px solid transparent;
+    border: 3px solid $c-orange-900;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s linear, outline-color 0.3s linear,
+      border-color 0.3s linear;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      min-width: 19px;
+      height: 19px;
+      mask-image: url("../images/sprite.svg#icon-right");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      background-color: $c-orange-900;
+      transition: background-color 0.3s linear;
+    }
+
+    &--prev {
+      &::before {
+        mask-image: url("../images/sprite.svg#icon-left");
       }
     }
 
-    &.slick-active {
-      button {
+    &[disabled] {
+      border-color: $c-gray;
+      &:focus,
+      &:hover,
+      &:active {
+        border-color: inherit;
+        outline-color: transparent;
+        background-color: inherit;
+      }
+      &::before {
+        background-color: $c-gray;
+      }
+    }
+
+    &:focus {
+      outline-color: rgba($c-orange-900, 0.5);
+    }
+
+    &:hover {
+      border-color: rgba($c-orange-900, 0.5);
+      background-color: rgba($c-orange-900, 0.1);
+      outline-color: transparent;
+
+      &::before {
+        background-color: rgba($c-orange-900, 0.5);
+      }
+    }
+
+    &:active {
+      border-color: rgba($c-orange-900, 0.1);
+      background-color: rgba($c-orange-900, 0.1);
+      outline-color: transparent;
+
+      &::before {
         background-color: $c-orange-900;
       }
     }
   }
-}
 
-.slick-prev,
-.slick-next {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 3px solid $c-gray;
-  transition: box-shadow 0.3s linear, background-color 0.3s linear,
-    border 0.3s linear;
+  &__dots {
+    display: flex;
+    gap: 15px;
+    @include mq(phone) {
+      display: none;
+    }
+  }
 
-  &::before {
-    content: "";
-    width: 11px;
-    height: 18px;
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    mask-position: center;
+  &__dot {
+    min-width: 15px;
+    height: 15px;
+    border-radius: 50%;
     background-color: $c-gray;
-  }
+    cursor: pointer;
+    outline: 2px solid transparent;
+    transition: background-color 0.3s linear, outline-color 0.3s linear;
 
-  &--left {
-    &::before {
-      mask-image: url("../images/sprite.svg#icon-left");
+    &--active {
+      background-color: $c-orange-900;
     }
-  }
 
-  &--right {
-    &::before {
-      mask-image: url("../images/sprite.svg#icon-right");
+    &:focus {
+      outline-color: $c-orange-900;
     }
-  }
-
-  &:focus {
-    box-shadow: 0px 0px 0px 2px rgba($c-orange-900, 0.7);
-  }
-
-  &:hover {
-    border: 3px solid rgba($c-orange-900, 0.5);
-    background-color: $c-orange-50;
-    box-shadow: none;
-  }
-
-  &:active {
-    background-color: $c-orange-50;
-    border: none;
-    box-shadow: none;
-  }
-
-  &:hover {
-    &::before {
+    &:hover {
+      outline-color: rgba($c-orange-900, 0.5);
+      background-color: rgba($c-orange-900, 0.1);
+    }
+    &:active {
+      outline-color: transparent;
       background-color: rgba($c-orange-900, 0.5);
     }
   }
-
-  &:active {
-    &::before {
-      background-color: $c-orange-900;
-    }
-  }
-}
-
-.slick-prev {
-  bottom: 0;
-  left: 476px;
-  border: 3px solid $c-orange-900;
-  &::before {
-    background-color: $c-orange-900;
-  }
-}
-
-.slick-next {
-  bottom: 0;
-  right: 476px;
 }
