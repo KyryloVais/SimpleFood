@@ -1,0 +1,47 @@
+.discounts {
+  &__title {
+    text-align: start;
+    @include mq(tablet) {
+      text-align: center;
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: size(30, 0);
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 10px;
+
+    @include mq(tablet-2) {
+      grid-template-columns: repeat(2, 1fr);
+
+      margin-bottom: 42px;
+    }
+    @include mq(tablet) {
+      display: flex;
+      max-height: 392px;
+    }
+  }
+
+  &__item {
+    padding: 10px 0;
+    @include mq(tablet-2) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__text {
+    font-size: 24px;
+    padding: 15px 20px;
+    text-align: center;
+  }
+
+  &__dots {
+    @extend .restaurant__dots;
+  }
+
+  &__dot {
+    @extend .restaurant__dot;
+  }
+}

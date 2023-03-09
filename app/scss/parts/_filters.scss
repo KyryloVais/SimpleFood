@@ -1,0 +1,141 @@
+.categories {
+  &__items {
+    padding: 20px 15px;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  &__link {
+    @extend .menu__link;
+    letter-spacing: 0.03em;
+  }
+}
+
+.offer {
+  &__form {
+    padding: 25px 16px;
+  }
+
+  &__label {
+    padding-left: 22px;
+    font-size: 18px;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    transition: color 0.3s linear;
+    position: relative;
+
+    &:hover {
+      color: $c-orange-900;
+    }
+  }
+
+  &__label:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  &__input {
+    &:checked + .offer__checkbox {
+      &::before {
+        content: "";
+        mask-image: url("../../images/sprite.svg#icon-check");
+        background-color: $c-darkBlue-900;
+        width: 12px;
+        height: 9px;
+        position: absolute;
+        mask-repeat: no-repeat;
+        mask-size: cover;
+        mask-position: center;
+        left: 6px;
+        top: 6px;
+      }
+      border-color: $c-darkBlue-900;
+    }
+  }
+
+  &__checkbox {
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    border: 1px solid $c-silver-200;
+    background-color: #faeded;
+    position: absolute;
+    left: 0;
+    transition: border-color 0.3s linear;
+
+    &:hover {
+      border-color: $c-orange-900;
+    }
+  }
+}
+
+.price {
+  &__form {
+    padding: 24px 15px;
+  }
+
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 25px;
+  }
+
+  &__span {
+    font-size: 16px;
+    line-height: 1.2;
+    color: $c-gray;
+  }
+
+  &__from,
+  &__to {
+    display: inline-block;
+    border: 1px solid $c-silver-200;
+    border-radius: 3px;
+    padding: 12px 20px;
+    background-color: #faeded;
+    line-height: 1;
+    color: $c-dark;
+    max-width: 70px;
+    height: 40px;
+  }
+}
+
+.irs--flat .irs-bar {
+  top: 8px;
+  height: 2px;
+  background-color: $c-orange-900;
+}
+.irs--flat .irs-line {
+  top: 8px;
+  height: 2px;
+  background-color: #e1e4e9;
+  border-radius: 4px;
+}
+
+.irs--flat .irs-handle {
+  top: 0;
+  width: 18px;
+  height: 18px;
+  background-color: $c-orange-900;
+  border-radius: 50%;
+}
+
+.irs--flat .irs-handle > i:first-child {
+  width: 0;
+}
+
+.irs--flat .irs-from,
+.irs--flat .irs-to,
+.irs--flat .irs-single {
+  display: none;
+}
+
+.irs--flat .irs-min,
+.irs--flat .irs-max {
+  display: none;
+}
+
+.irs--flat {
+  height: 18px;
+}

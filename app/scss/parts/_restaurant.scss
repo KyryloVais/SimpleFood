@@ -1,16 +1,48 @@
 .restaurant {
   @include mq(tablet) {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
   }
+
   &__list {
+    box-sizing: border-box !important;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    @include mq(desktop) {
-      grid-template-columns: repeat(2, 1fr);
+    @include mq(tablet-2) {
+      grid-template-columns: repeat(2, minmax(auto, 370px));
+      gap: 10px;
     }
-    @include mq(tablet) {
-      display: none;
+    @include mq(phone) {
+      display: flex;
+      justify-content: initial;
+      gap: initial;
+      margin-bottom: 30px;
+    }
+
+    .rest-card {
+      @include mq(phone) {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__slider {
+    overflow: visible;
+    @include mq(phone) {
+      overflow: hidden;
+    }
+  }
+
+  &__dots {
+    @extend .reviews__dots;
+    justify-content: center;
+    padding: 2px;
+  }
+
+  &__dot {
+    @extend .reviews__dot;
+    &--active {
+      @extend .reviews__dot--active;
     }
   }
 }
@@ -18,14 +50,10 @@
 .rest-card {
   overflow: hidden;
   max-width: 370px;
+  height: 100%;
   box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   transition: box-shadow 0.3s linear;
-
-  @include mq(desktop) {
-    min-width: 345px;
-    margin: 0 auto;
-  }
 
   @include mq(tablet) {
     margin-bottom: 30px;

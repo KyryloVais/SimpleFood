@@ -1,0 +1,39 @@
+.breadcrumbs {
+  width: 100%;
+  background-color: rgba($c-orange-900, 0.1);
+  margin-bottom: size(60, 40);
+
+  &__list {
+    height: 65px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    color: #505050;
+    padding-right: 16px;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      mask-image: url("../../images/sprite.svg#icon-chevron-right");
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      mask-position: center;
+      width: 10px;
+      height: 10px;
+      top: 5px;
+      right: 3px;
+      background-color: #c1c1c1;
+    }
+
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

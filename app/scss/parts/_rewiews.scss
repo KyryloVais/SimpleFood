@@ -7,13 +7,12 @@
     padding: 0 size(90, 0);
     display: flex;
     justify-content: space-between;
-    gap: 40px;
+    gap: size(40, 19);
     align-items: center;
     margin-bottom: 30px;
 
     @include mq(tablet) {
       flex-direction: column;
-      gap: 19px;
     }
   }
 
@@ -24,6 +23,10 @@
     height: size(300, 100);
     flex-basis: 100px;
     object-fit: contain;
+
+    @include mq(phone) {
+      margin-bottom: 2px;
+    }
   }
 
   &__right {
@@ -44,13 +47,9 @@
     padding: 10px 40px;
     font-style: italic;
     line-height: 1.5;
-    margin-bottom: 20px;
+    margin-bottom: size(20, 10);
     @include fz(20, 14);
     @include line-clamp(8);
-
-    @include mq(tablet) {
-      margin-bottom: 10px;
-    }
 
     &::after,
     &::before {
@@ -95,10 +94,7 @@
     font-weight: 400;
     font-size: 14px;
     color: $c-dark;
-    margin-top: 15px;
-    @include mq(tablet) {
-      margin-top: 10px;
-    }
+    margin-top: size(15, 10);
   }
 
   &__actions {
@@ -112,7 +108,6 @@
     @include mq(phone) {
       position: relative;
       z-index: 1;
-
       top: -357px;
       gap: 200px;
     }
@@ -192,9 +187,6 @@
   &__dots {
     display: flex;
     gap: 15px;
-    @include mq(phone) {
-      display: none;
-    }
   }
 
   &__dot {
@@ -220,6 +212,14 @@
     &:active {
       outline-color: transparent;
       background-color: rgba($c-orange-900, 0.5);
+    }
+  }
+
+  &__slider {
+    .reviews__dots {
+      @include mq(phone) {
+        display: none;
+      }
     }
   }
 }

@@ -1,0 +1,35 @@
+.mob-filters {
+  overflow-y: auto;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+  padding-top: 80px;
+  padding-right: 50px;
+  min-width: 271px;
+  background-color: $c-white;
+  opacity: 0;
+  transform: translateY(-200%);
+  transition: transform 0.3s linear, opacity 0.3s linear;
+
+  @include mq(tablet) {
+    display: block;
+  }
+
+  &.open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__btn {
+    min-width: 40px;
+    height: 40px;
+    background-color: #faeded;
+    border-radius: 3px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+}

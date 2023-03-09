@@ -7,13 +7,20 @@
 @import "global";
 
 @import "parts/header";
+@import "parts/menu-mob";
 @import "parts/hero-section";
 @import "parts/popular-section";
 @import "parts/categories";
 @import "parts/_product-card";
 @import "parts/about";
 @import "parts/restaurant";
-@import "parts/_rest-slider";
 @import "parts/rewiews";
 @import "parts/app";
+@import "parts/breadcrumbs";
+@import "parts/catalog";
+@import "parts/mob-filters";
+@import "parts/filters";
+@import "parts/pagination";
+@import "parts/discounts";
+
 @import "parts/_footer";

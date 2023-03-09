@@ -11,15 +11,19 @@
     background-position: right;
   }
 
+  @include mq(tablet) {
+    background-color: rgba(255, 255, 255, 0.85);
+    background-blend-mode: overlay;
+  }
+
   @include mq(phone) {
-    background-position: right calc((100vw - 1170px) / 2) center;
+    background-size: 0;
   }
 }
 
 .app-mob {
   max-width: 470px;
   height: size(299, 195);
-  background-color: rgba(255, 255, 255, 0.85);
 
   &__title {
     text-align: start;
@@ -31,10 +35,7 @@
     @include line-clamp(3);
     line-height: 1.5;
     opacity: 0.9;
-    margin-bottom: 30px;
-    @include mq(phone) {
-      margin-bottom: 15px;
-    }
+    margin-bottom: size(30, 15);
   }
 
   &__apple,
