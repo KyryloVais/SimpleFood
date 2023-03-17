@@ -1,0 +1,133 @@
+.product-tabs {
+  max-width: 692px;
+  width: 100%;
+  margin: 0 auto size(120, 40);
+
+  @include mq(tablet-2) {
+    padding: 0 30px;
+  }
+
+  @include mq(tablet) {
+    padding: 0;
+    margin: 0 0 size(120, 40);
+  }
+
+  &__top {
+    margin-bottom: 30px;
+    display: flex;
+    overflow-x: auto;
+  }
+
+  &__top-item {
+    white-space: nowrap;
+    font-size: size(24, 20);
+    line-height: 1.5;
+    color: $c-darkBlue-900;
+    margin-right: size(60, 30);
+    display: inline-block;
+    transition: all 0.3s linear;
+  }
+
+  &__top-item--active {
+    color: $c-orange-900;
+  }
+
+  &__content-item {
+    display: none;
+    &.product-tabs__content-item--active {
+      display: block;
+    }
+  }
+}
+
+.tabs-description {
+  font-size: size(20, 16);
+  line-height: 1.5;
+  opacity: 0.9;
+  display: grid;
+  gap: 20px;
+}
+
+.tabs-features {
+  &__list {
+    display: grid;
+    gap: 10px;
+    @include mq(phone) {
+      gap: 15px;
+    }
+  }
+
+  &__text {
+    font-size: size(20, 16);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  &__number {
+    font-size: size(20, 16);
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+}
+
+.tabs-reviews {
+  &__content {
+    margin-bottom: 25px;
+  }
+
+  &__content:first-of-type {
+    display: block;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $c-gray;
+  }
+
+  &__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: size(20, 15);
+  }
+
+  &__img {
+    margin-right: 25px;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: size(20, 16);
+    margin-right: 100px;
+  }
+
+  &__number {
+    font-weight: 400;
+    display: block;
+    font-size: 18px;
+    letter-spacing: 0.03em;
+    padding-top: 20px;
+    opacity: 0.9;
+  }
+
+  &__star {
+    margin-left: auto;
+    margin-bottom: 0;
+    @include mq(phone) {
+      padding-top: 15px;
+      margin-left: 0;
+    }
+  }
+
+  &__text {
+    font-size: size(20, 16);
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+}
+
+.tabs-title {
+  color: $c-darkBlue-900;
+  font-weight: 500;
+  font-size: size(24, 20);
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}

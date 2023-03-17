@@ -1,0 +1,138 @@
+<div class="product-tabs ">
+  <div class="container">
+    <div class="product-tabs__top">
+      <a class="product-tabs__top-item product-tabs__top-item--active" href="#tab-1">Опис</a>
+      <a class="product-tabs__top-item" href="#tab-2">Характеристики</a>
+      <a class="product-tabs__top-item" href="#tab-3">Відгуки (2)</a>
+    </div>
+    <div class="product-tabs__content">
+      <div class="product-tabs__content-item product-tabs__content-item--active" id="tab-1">
+        <div class="tabs-description">
+          <p>Рубаний біфштекс із натуральної яловичини на карамелізованій булочці, зі скибочкою сиру "Чеддер",
+            кетчупом, гірчицею,
+            цибулею та маринованими огірочками.</p>
+          <p>Алергени: глютен, молоко, гірчиця. Може містити сою, яйце, сліди кунжуту</p>
+          <p>Зовнішній вигляд товару може відрізнятися від зображень, представлених на сайті.</p>
+        </div>
+      </div>
+      <div class="product-tabs__content-item" id="tab-2">
+        <div class="tabs-features">
+          <ul class="tabs-features__list">
+            <li class="tabs-features__item">
+              <span class="tabs-features__text">Діаметр:</span>
+              <span class="tabs-features__number">20 см</span>
+            </li>
+
+            <li class="tabs-features__item">
+              <span class="tabs-features__text">Вага:</span>
+              <span class="tabs-features__number">300 гр</span>
+            </li>
+
+            <li class="tabs-features__item">
+              <span class="tabs-features__text">Калорійність (на 100г):</span>
+              <span class="tabs-features__number">295 ккал</span>
+            </li>
+
+            <li class="tabs-features__item">
+              <span class="tabs-features__text">Термін зберігання:</span>
+              <span class="tabs-features__number">до 3 діб</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-tabs__content-item" id="tab-3">
+        <div class="tabs-reviews">
+          <div class="tabs-title">Думки наших клієнтів</div>
+
+          <figura class="tabs-reviews__content">
+            <div class="tabs-reviews__top">
+              <img class="tabs-reviews__img" src="../images/reviews_tabs.png" alt="Фото Андрія" width="70" height="70">
+              <figcaption class="tabs-reviews__name">
+                Андрій
+                <span class="tabs-reviews__number">10.06.2021</span>
+              </figcaption>
+              <div class="tabs-reviews__star star" data-rateyo-rating="5"></div>
+            </div>
+            <blockquote class="tabs-reviews__text">Доставили швидко. Товар свіжий та дуже смачний, буду ще
+              обов’язково
+              куштувати!</blockquote>
+          </figura>
+
+          <figura class="tabs-reviews__content">
+            <div class="tabs-reviews__top">
+              <img class="tabs-reviews__img" src="../images/reviews_tabs.png" alt="Фото Катерини" width="70"
+                height="70">
+              <figcaption class="tabs-reviews__name">
+                Катерина Біла
+                <span class="tabs-reviews__number">7.06.2021</span>
+              </figcaption>
+              <div class="tabs-reviews__star star" data-rateyo-rating="4"></div>
+            </div>
+            <blockquote class="tabs-reviews__text">Цей бургер непоганий на смак, особливо, коли немає
+              можливості або
+              часу щось готувати. Це чудовий варіант, щоб перекусити
+              находу, але, щоб себе побалувати, краще замовлю піцу</blockquote>
+          </figura>
+
+          <form class="tabs-form" action="#">
+            <div class="tabs-title">Залишити відгук</div>
+            <div class="tabs-form__rating">
+              <span class="tabs-form__title ">Ваша оцінка *</span>
+
+              <label class="tabs-form__label">
+                <input class="tabs-form__input" type="checkbox" name="star">
+                <span class="tabs-form__checkbox icon icon--star"></span>
+              </label>
+
+              <label class="tabs-form__label">
+                <input class="tabs-form__input" type="checkbox" name="star">
+                <span class="tabs-form__checkbox icon icon--star"></span>
+              </label>
+
+              <label class="tabs-form__label">
+                <input class="tabs-form__input" type="checkbox" name="star">
+                <span class="tabs-form__checkbox icon icon--star"></span>
+              </label>
+
+              <label class="tabs-form__label">
+                <input class="tabs-form__input" type="checkbox" name="star">
+                <span class="tabs-form__checkbox icon icon--star"></span>
+              </label>
+
+              <label class="tabs-form__label">
+                <input class="tabs-form__input" type="checkbox" name="star">
+                <span class="tabs-form__checkbox icon icon--star"></span>
+              </label>
+
+            </div>
+
+            <div class="tabs-form__box">
+              <div class="tabs-form__left">
+                <label class="tabs-form__text" for="form-textarea">Ваш відгук *</label>
+                <textarea class="tabs-form__textarea" id="form-textarea" type="text" name="text"
+                  placeholder="Введіть текст відгука"></textarea>
+              </div>
+
+              <div class="tabs-form__right">
+                <label class="tabs-form__text" for="form-name">Ім’я</label>
+                <input class="tabs-form__info" id="form-name" type="name" name="name" placeholder="Введіть ваше ім’я">
+
+                <label class="tabs-form__text" for="form-email">Email *</label>
+                <input class="tabs-form__info" id="form-email" type="email" name="email"
+                  placeholder="youremail@mail.com">
+              </div>
+            </div>
+
+            <input class="sr-only tabs-form__save-input" id="save" name="save" type="checkbox">
+            <label class="tabs-form__save-label" for="save">Зберегти моє ім’я, email та адресу сайта в цьому
+              браузері
+              для наступних моїх коментарів.</label>
+
+            <button class="tabs-form__btn btn">Залишити відгук</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

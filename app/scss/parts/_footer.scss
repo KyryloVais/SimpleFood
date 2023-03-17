@@ -103,6 +103,7 @@
     &::before {
       min-width: 16px;
       background-color: $c-white;
+      mask-size: contain;
     }
 
     &:focus,

@@ -8,10 +8,12 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+
     @include mq(tablet-2) {
       grid-template-columns: repeat(2, minmax(auto, 370px));
       gap: 10px;
     }
+
     @include mq(phone) {
       display: flex;
       justify-content: initial;
@@ -48,12 +50,18 @@
 }
 
 .rest-card {
+  $this: &;
+  height: 100%;
   overflow: hidden;
   max-width: 370px;
   height: 100%;
   box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   transition: box-shadow 0.3s linear;
+
+  &__img {
+    object-fit: cover;
+  }
 
   @include mq(tablet) {
     margin-bottom: 30px;
@@ -69,7 +77,10 @@
 
   &__title {
     font-size: 24px;
-    margin-bottom: 20px;
+
+    & + #{$this}__actions {
+      margin-top: 20px;
+    }
   }
 
   &__bottom {

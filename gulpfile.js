@@ -8,13 +8,14 @@ const imagemin = require("gulp-imagemin");
 const del = require("del");
 const svgSprite = require("gulp-svg-sprite");
 const browserSync = require("browser-sync").create();
+const fileInclude = require("gulp-file-include");
 
 function browsersync() {
   browserSync.init({
     server: {
       baseDir: "app/",
     },
-    notofy: false,
+    notify: false,
   });
 }
 
@@ -31,10 +32,10 @@ function svgSprites() {
     )
     .pipe(dest("app/images"));
 }
-
+// expanded;
 function styles() {
   return src("app/scss/style.scss")
-    .pipe(scss({ outputStyle: "expanded" }))
+    .pipe(scss({ outputStyle: "compressed" }))
     .pipe(concat("style.min.css"))
     .pipe(
       autoprefixer({ overrideBrowserslist: ["last 10 versions"], grid: true })
@@ -43,11 +44,25 @@ function styles() {
     .pipe(browserSync.stream());
 }
 
+const htmlInclude = () => {
+  return src(["app/html/*.html"])
+    .pipe(
+      fileInclude({
+        prefix: "@",
+        basepath: "@file",
+      })
+    )
+    .pipe(dest("app"))
+    .pipe(browserSync.stream());
+};
+
 function scripts() {
   return src([
     "node_modules/jquery/dist/jquery.js",
     "node_modules/ion-rangeslider/js/ion.rangeSlider.js",
     "node_modules/jquery-form-styler/dist/jquery.formstyler.js",
+    "node_modules/rateyo/src/jquery.rateyo.js",
+    "node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js",
     "app/js/main.js",
   ])
     .pipe(concat("main.min.js"))
@@ -86,10 +101,12 @@ function watching() {
   watch(["app/js/**/*.js", "!app/js/main.min.js"], scripts);
   watch(["app/**/*.html"]).on("change", browserSync.reload);
   watch(["app/images/icons/*.svg"], svgSprites);
+  watch(["app/html/**/*.html"], htmlInclude);
 }
 
 exports.styles = styles;
 exports.scripts = scripts;
+exports.htmlInclude = htmlInclude;
 exports.browsersync = browsersync;
 exports.watching = watching;
 exports.images = images;
@@ -97,4 +114,11 @@ exports.cleanDist = cleanDist;
 exports.svgSprites = svgSprites;
 exports.build = series(cleanDist, images, build);
 
-exports.default = parallel(styles, scripts, browsersync, watching, svgSprites);
+exports.default = parallel(
+  htmlInclude,
+  styles,
+  scripts,
+  browsersync,
+  watching,
+  svgSprites
+);

@@ -11,7 +11,8 @@ body {
   overflow-x: hidden;
 }
 
-.main {
+.main,
+.catalog-page {
   flex-grow: 1;
   padding-top: size(159, 72);
 }
@@ -160,20 +161,14 @@ body {
       background-color: $c-dark;
     }
   }
-  &--left {
+  &--chevron-left {
     &::before {
       mask-image: url("../images/sprite.svg#icon-chevron-left");
-      background-color: $c-dark;
-      min-width: 11px;
-      height: 18px;
     }
   }
-  &--right {
+  &--chevron-right {
     &::before {
       mask-image: url("../images/sprite.svg#icon-chevron-right");
-      background-color: $c-dark;
-      min-width: 11px;
-      height: 18px;
     }
   }
 
@@ -183,6 +178,28 @@ body {
       background-color: $c-darkBlue-900;
       min-width: 18px;
       height: 18px;
+    }
+  }
+
+  &--page-cart {
+    &::before {
+      mask-image: url("../images/sprite.svg#icon-cart");
+      background-color: $c-white;
+    }
+  }
+
+  &--filter {
+    &::before {
+      mask-image: url("../images/sprite.svg#catalog");
+    }
+  }
+
+  &--star {
+    &::before {
+      mask-image: url("../images/sprite.svg#icon-star");
+      min-width: 16px;
+      height: 16px;
+      background-color: $c-gray;
     }
   }
 }
@@ -249,8 +266,7 @@ body {
   letter-spacing: 0.03em;
   border-radius: 6px;
   outline: 2px solid transparent;
-  transition: color 0.3s linear, outline-color 0.3s linear,
-    background-color 0.3s linear, bop-shadow 0.3s linear;
+  transition: color 0.3s linear, outline-color 0.3s linear, background-color 0.3s linear, bop-shadow 0.3s linear;
   appearance: none;
 
   @include mq(phone) {
@@ -321,8 +337,7 @@ body {
   outline: 2px solid transparent;
   border-radius: 5px;
   text-decoration: underline;
-  transition: outline-color 0.3s linear, color 0.3s linear,
-    text-shadow 0.3s linear;
+  transition: outline-color 0.3s linear, color 0.3s linear, text-shadow 0.3s linear;
 
   &:focus {
     outline-color: rgba($c-orange-900, 0.7);
@@ -370,35 +385,5 @@ body {
 .footer-mob {
   @include mq(phone) {
     padding: 0 15px;
-  }
-}
-
-.catalog {
-  &::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.15);
-    opacity: 0;
-    visibility: hidden;
-    z-index: -100;
-    transition: opacity 0.3s linear;
-  }
-}
-
-@at-root .filters-lock {
-  overflow: hidden;
-
-  .catalog {
-    &::before {
-      @include mq(tablet) {
-        opacity: 1;
-        visibility: visible;
-        z-index: 99;
-      }
-    }
   }
 }

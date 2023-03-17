@@ -1,0 +1,240 @@
+.product-top {
+  padding-bottom: size(60, 30);
+  margin: 30px 0;
+  border-bottom: 1px solid $c-gray;
+
+  &__slider {
+    width: 100%;
+    @include mq(phone) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    @include mq(tablet) {
+      flex-direction: column;
+    }
+  }
+
+  &__link {
+    padding: size(75, 0) size(105, 0);
+    background-color: $c-white;
+    display: inline-block;
+    border-radius: 5px;
+  }
+
+  &__img {
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__right {
+    max-width: 530px;
+    width: 100%;
+    margin-left: 15px;
+    padding-left: 15px;
+    @include mq(phone) {
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  &__btn {
+    &::before {
+      content: "";
+      display: inline-block;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 32px;
+      width: 19px;
+      height: 32px;
+      background-color: $c-darkBlue-900;
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @include mq(desktop) {
+        transform: none;
+        top: 20px;
+      }
+    }
+    @include mq(phone) {
+      display: none;
+    }
+  }
+
+  &__btn--prev {
+    &::before {
+      mask-image: url("../../images/sprite.svg#icon-chevron-left");
+      left: 45px;
+    }
+  }
+
+  &__btn--next {
+    &::before {
+      mask-image: url("../../images/sprite.svg#icon-chevron-right");
+      right: 73px;
+
+      @include mq(desktop) {
+        left: 150px;
+      }
+    }
+  }
+}
+
+.fancybox-slide--image {
+  background-color: $c-white;
+}
+
+.product-burger {
+  &__title {
+    text-align: left;
+    margin-bottom: size(30, 15);
+  }
+
+  &__price {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: $c-darkBlue-900;
+    margin-bottom: size(20, 17);
+  }
+
+  &__delivery {
+    font-size: size(24, 18);
+    color: $c-darkBlue-900;
+    line-height: 1.2;
+    border-bottom: 1px solid $c-gray;
+    padding-bottom: 15px;
+    margin-bottom: size(20, 15);
+  }
+
+  &__text {
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+    color: #505050;
+    margin-bottom: size(20, 15);
+  }
+}
+
+.star {
+  margin-bottom: size(25, 15);
+}
+
+.product-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  &__btn {
+    font-size: 14px;
+    white-space: nowrap;
+    width: 214px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 28px;
+
+    &::before {
+      display: inline-block;
+    }
+
+    &:hover {
+      &::before {
+        background-color: $c-orange-900;
+      }
+    }
+
+    &:focus {
+      &::before {
+        background-color: $c-orange-900;
+      }
+    }
+  }
+}
+
+.jq-number__field {
+  position: relative;
+  min-width: 158px;
+  height: 44px;
+  background-color: rgba($c-orange-900, 0.1);
+  border: none;
+  box-shadow: none;
+}
+
+.jq-number__field input {
+  position: relative;
+  text-align: center;
+  color: $c-darkBlue-900;
+  padding: 11px 9px;
+  font-size: 20px;
+}
+
+.jq-number__spin {
+  position: absolute;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: $c-orange-900;
+  box-shadow: none;
+  text-shadow: none;
+  cursor: pointer;
+  transition: all 0.3s linear;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $c-white;
+    width: 20px;
+    height: 20px;
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: transparent;
+    box-shadow: 0 0 0 2px rgba($c-orange-900, 0.7);
+
+    &::after {
+      background-color: $c-orange-900;
+    }
+  }
+
+  &:active {
+    background: $c-orange-900;
+    box-shadow: none;
+
+    &::after {
+      background-color: $c-white;
+    }
+  }
+}
+
+.jq-number__spin.minus {
+  left: 0;
+}
+
+.jq-number__spin.minus::after {
+  content: "";
+  top: 50%;
+  transform: translateY(-50%);
+  mask-image: url("../../images/sprite.svg#icon-minus");
+}
+
+.jq-number__spin.plus::after {
+  content: "";
+  left: 12px;
+  mask-image: url("../../images/sprite.svg#icon-plus");
+}
+
+.jq-number {
+  padding: 0;
+}
