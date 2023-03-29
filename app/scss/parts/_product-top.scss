@@ -1,42 +1,93 @@
 .product-top {
   padding-bottom: size(60, 30);
-  margin: 30px 0;
+  margin: size(60, 30) 0 30px;
   border-bottom: 1px solid $c-gray;
-
-  &__slider {
-    width: 100%;
-    @include mq(phone) {
-      margin-bottom: 30px;
-    }
-  }
 
   &__content {
     display: flex;
-    justify-content: space-between;
+    gap: 30px;
+    justify-content: center;
 
     @include mq(tablet) {
       flex-direction: column;
+      align-items: center;
     }
   }
 
-  &__link {
-    padding: size(75, 0) size(105, 0);
-    background-color: $c-white;
-    display: inline-block;
+  &__slider {
+    max-width: size(610, 345);
+    height: size(610, 345);
     border-radius: 5px;
+    outline: 1px solid $c-gray;
+    overflow: hidden;
+    background-color: $c-white;
   }
 
-  &__img {
-    object-fit: cover;
-    max-width: 100%;
-    height: auto;
+  .product-slider {
+    padding: size(75, 22) size(105, 22);
+
+    .swiper-slide {
+      transition: all 0.3s linear;
+      opacity: 0;
+    }
+
+    .swiper-slide-active {
+      opacity: 1;
+    }
+
+    &__img {
+      width: size(400, 300);
+      margin: 0 auto;
+    }
+
+    &__btns {
+      @include mq(tablet) {
+        display: none;
+      }
+    }
+
+    &__btn {
+      position: absolute;
+      top: calc(50% - 30px);
+      width: 60px;
+      height: 60px;
+      z-index: 99;
+      border-radius: 3px;
+      outline: 2px solid transparent;
+      transition: all 0.3s linear;
+
+      &::before {
+        min-width: 32px;
+        height: 32px;
+      }
+
+      &:focus {
+        outline-color: $c-orange-900;
+      }
+
+      &:hover {
+        &::before {
+          background-color: $c-orange-900;
+        }
+      }
+
+      &:active {
+        background-color: rgba($c-orange-900, 0.1);
+      }
+    }
+
+    &__btn--prev {
+      left: 25px;
+    }
+
+    &__btn--next {
+      right: 25px;
+    }
   }
 
   &__right {
     max-width: 530px;
     width: 100%;
-    margin-left: 15px;
-    padding-left: 15px;
     @include mq(phone) {
       margin-left: 0;
       padding-left: 0;
@@ -83,6 +134,106 @@
       @include mq(desktop) {
         left: 150px;
       }
+    }
+  }
+}
+.product-lightbox {
+  .lg-backdrop {
+    background-color: rgba($c-dark, 0.2);
+  }
+
+  .lg-outer {
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background-color: $c-white;
+    border-radius: 15px;
+  }
+
+  .lg-content {
+    top: 0 !important;
+  }
+
+  .lg-prev,
+  .lg-next {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    background-color: transparent;
+    @extend .icon;
+    @extend .icon--chevron-left;
+
+    &::before {
+      min-width: 32px;
+      height: 32px;
+    }
+
+    &::after {
+      content: none;
+    }
+
+    &:hover {
+      &::before {
+        background-color: $c-orange-900;
+      }
+    }
+  }
+
+  .lg-next {
+    @extend .icon--chevron-right;
+  }
+
+  .lg-close {
+    border-radius: 5px;
+    padding: 0;
+    height: 60px;
+    width: 60px;
+    font-size: 32px;
+    line-height: 60px;
+    margin-top: 24px;
+    margin-right: 24px;
+    transition: all 0.3s ease-in-out;
+
+    &:focus {
+      background-color: rgba($c-orange-900, 0.25);
+      color: rgba($c-dark, 0.2);
+    }
+
+    &:hover {
+      background-color: rgba($c-orange-900, 0.1);
+      color: $c-orange-900;
+    }
+  }
+
+  .lg-pager-outer {
+    margin-bottom: 30px;
+  }
+
+  .lg-pager {
+    width: 15px;
+    height: 15px;
+    background-color: $c-gray;
+    box-shadow: unset;
+
+    &:hover {
+      box-shadow: unset;
+      background-color: rgba($c-orange-900, 0.6);
+    }
+  }
+
+  .lg-pager-cont {
+    margin: 0;
+    margin-right: 15px;
+  }
+
+  .lg-pager-cont.lg-pager-active .lg-pager {
+    box-shadow: unset;
+  }
+
+  .lg-pager-active {
+    .lg-pager {
+      background-color: $c-orange-900;
     }
   }
 }
