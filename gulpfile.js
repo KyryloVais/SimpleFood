@@ -92,9 +92,9 @@ function build() {
     "app/css/*.css",
     "app/js/*.js",
     "app/images/**/*.*"
-  ],
-    { base: "app" }
-  ).pipe(dest("dist"));
+  ], {
+    base: "app"
+  }).pipe(dest("dist"));
 }
 
 function cleanDist() {

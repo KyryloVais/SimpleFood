@@ -1,15 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const lightbox = document.querySelector('.product-slider__items')
 
-  lightGallery(lightbox, {
-    plugins: [lgPager],
-    speed: 500,
-    addClass: 'product-lightbox',
-    counter: false,
-    download: false,
-    closeOnTap: false,
-    getCaptionFromTitleOrAlt: false
-  });
 
   $('.product-tabs__top-item').on('click', function (e) {
     e.preventDefault();
@@ -99,6 +89,18 @@ document.addEventListener("DOMContentLoaded", () => {
       nextEl: ".product-slider__btn--next",
       prevEl: ".product-slider__btn--prev",
     },
+  });
+
+  const lightbox = document.querySelector('.product-slider__items')
+
+  lightGallery(lightbox, {
+    plugins: [lgPager],
+    speed: 500,
+    addClass: 'product-lightbox',
+    counter: false,
+    download: false,
+    closeOnTap: false,
+    getCaptionFromTitleOrAlt: false
   });
 
   const burgersSwiper = new Swiper(".burgers-slider__slider", {
@@ -228,3 +230,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
