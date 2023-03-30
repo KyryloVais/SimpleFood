@@ -1,0 +1,227 @@
+.footer {
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: size(70, 30);
+    margin-bottom: 60px;
+
+    @include mq(tablet-2) {
+      justify-content: center;
+      margin-bottom: 54px;
+    }
+
+    @include mq(phone) {
+      flex-direction: column;
+    }
+  }
+
+  &__subscription {
+    @include mq(tablet-2) {
+      order: 1;
+      margin-right: 54px;
+    }
+  }
+
+  &__nav {
+    @include mq(tablet-2) {
+      order: 3;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 30px;
+    max-width: 200px;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-auto-flow: column;
+    gap: 20px 90px;
+
+    .info__item {
+      line-height: 23px;
+      font-size: 18px;
+      order: -1;
+      grid-column: 3;
+      @include mq(phone) {
+        grid-column: 1;
+      }
+
+      &:nth-child(-n + 4) {
+        grid-column: 1;
+      }
+
+      &:nth-child(n + 5):nth-child(-n + 8) {
+        grid-column: 2;
+        @include mq(phone) {
+          grid-column: 1;
+        }
+      }
+    }
+  }
+
+  &__contacts {
+    margin-left: auto;
+    margin-right: 80px;
+
+    @include mq(tablet-2) {
+      margin: 0;
+      order: 2;
+    }
+  }
+
+  &__bottom {
+    font-size: 14px;
+    line-height: 1;
+    color: $c-white;
+    background-color: $c-darkBlue-900;
+    padding: 30px;
+    text-align: center;
+    @include mq(phone) {
+      padding: 20px;
+      text-align: center;
+    }
+  }
+}
+
+.subscription {
+  .form__field {
+    width: 200px;
+    margin-bottom: 12px;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+    padding: 11px 30px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    gap: 20px;
+    &::before {
+      min-width: 16px;
+      background-color: $c-white;
+      mask-size: contain;
+    }
+
+    &:focus,
+    &:hover {
+      outline: 2px solid rgba($c-orange-900, 0.7);
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+      &::before {
+        background-color: $c-orange-900;
+      }
+    }
+  }
+}
+
+.form {
+  &__field {
+    border-radius: 5px;
+    outline: 1px solid $c-gray;
+    padding: 11px 15px;
+    transition: outline-color 0.3s linear, outline-width 0.3s linear;
+
+    &::placeholder {
+      font-size: 14px;
+      color: $c-gray;
+      transition: color 0.3s linear;
+    }
+
+    &:focus {
+      outline-color: $c-orange-900;
+      outline-width: 2px;
+    }
+    &:hover {
+      &::placeholder {
+        color: $c-dark;
+      }
+    }
+  }
+}
+
+.contacts {
+  &__item {
+    margin-bottom: 15px;
+  }
+
+  &__link {
+    line-height: 2;
+    gap: 7px;
+    justify-content: flex-start;
+
+    transition: outline-color 0.3s linear, color 0.3s linear,
+      text-shadow 0.3s linear;
+
+    &:focus {
+      outline-color: rgba($c-orange-900, 0.7);
+    }
+
+    &:hover {
+      color: $c-orange-900;
+      &::before {
+        background-color: $c-orange-900;
+      }
+    }
+
+    &:active {
+      text-shadow: 2px 2px 5px rgba($c-dark, 0.5);
+      outline-color: transparent;
+    }
+  }
+}
+
+.social {
+  display: flex;
+  gap: 13px;
+
+  &__link {
+    min-width: 39px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $c-silver-200;
+    border-radius: 50%;
+    outline: 2px solid transparent;
+    transition: outline-color 0.3s linear, background-color 0.3s linear;
+
+    &:focus {
+      outline-color: rgba($c-orange-900, 0.7);
+      background-color: rgba($c-orange-900, 0.1);
+    }
+
+    &:hover {
+      background-color: $c-orange-900;
+
+      .social__icon {
+        background-color: $c-white;
+      }
+    }
+
+    &:active {
+      outline-color: transparent;
+      background-color: rgba($c-orange-900, 0.1);
+
+      .social__icon {
+        background-color: $c-orange-900;
+      }
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+    background-color: $c-dark;
+  }
+}

@@ -1,0 +1,56 @@
+.burgers-slider {
+  &__title {
+    font-size: size(36, 20);
+    text-align: start;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-bottom: 19px;
+  }
+
+  &__item {
+    padding: 3px;
+  }
+
+  &__actions {
+    display: inline-flex;
+    gap: 25px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__btn {
+    @extend .reviews__btn;
+
+    @include mq(phone) {
+      display: none;
+    }
+  }
+
+  &__btn--prev {
+    &::before {
+      mask-image: url("../images/sprite.svg#icon-left");
+    }
+  }
+
+  &__dots {
+    display: none;
+    @extend .reviews__dots;
+    justify-content: center;
+    padding: 2px;
+    @include mq(phone) {
+      display: flex;
+    }
+  }
+
+  &__dot {
+    @extend .reviews__dot;
+    &--active {
+      @extend .reviews__dot--active;
+    }
+  }
+}

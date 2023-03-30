@@ -6,20 +6,36 @@ const autoprefixer = require("gulp-autoprefixer");
 const uglify = require("gulp-uglify");
 const imagemin = require("gulp-imagemin");
 const del = require("del");
+const svgSprite = require("gulp-svg-sprite");
 const browserSync = require("browser-sync").create();
+const fileInclude = require("gulp-file-include");
 
 function browsersync() {
   browserSync.init({
     server: {
       baseDir: "app/",
     },
-    notofy: false,
+    notify: false,
   });
 }
 
+function svgSprites() {
+  return src("app/images/icons/*.svg")
+    .pipe(
+      svgSprite({
+        mode: {
+          stack: {
+            sprite: "../sprite.svg",
+          },
+        },
+      })
+    )
+    .pipe(dest("app/images"));
+}
+// expanded;
 function styles() {
   return src("app/scss/style.scss")
-    .pipe(scss({ outputStyle: "expanded" }))
+    .pipe(scss({ outputStyle: "compressed" }))
     .pipe(concat("style.min.css"))
     .pipe(
       autoprefixer({ overrideBrowserslist: ["last 10 versions"], grid: true })
@@ -28,8 +44,26 @@ function styles() {
     .pipe(browserSync.stream());
 }
 
+const htmlInclude = () => {
+  return src(["app/html/*.html"])
+    .pipe(
+      fileInclude({
+        prefix: "@",
+        basepath: "@file",
+      })
+    )
+    .pipe(dest("app"))
+    .pipe(browserSync.stream());
+};
+
 function scripts() {
-  return src(["node_modules/jquery/dist/jquery.js", "app/js/main.js"])
+  return src([
+    "node_modules/jquery/dist/jquery.js",
+    "node_modules/ion-rangeslider/js/ion.rangeSlider.js",
+    "node_modules/jquery-form-styler/dist/jquery.formstyler.js",
+    "node_modules/rateyo/src/jquery.rateyo.js",
+    "app/js/main.js",
+  ])
     .pipe(concat("main.min.js"))
     .pipe(uglify())
     .pipe(dest("app/js"))
@@ -52,8 +86,14 @@ function images() {
 }
 
 function build() {
-  return src(["app/**/*.html", "app/css/style.min.css", "app/js/main.min.js"], {
-    base: "app",
+  return src([
+    "app/**/*.html",
+    "app/fonts/**/*.*",
+    "app/css/*.css",
+    "app/js/*.js",
+    "app/images/**/*.*"
+  ], {
+    base: "app"
   }).pipe(dest("dist"));
 }
 
@@ -63,16 +103,27 @@ function cleanDist() {
 
 function watching() {
   watch(["app/scss/**/*.scss"], styles);
-  watch(["app/js/**/*.js", "!app/js/main.js"], scripts);
+  watch(["app/js/**/*.js", "!app/js/main.min.js"], scripts);
   watch(["app/**/*.html"]).on("change", browserSync.reload);
+  watch(["app/images/icons/*.svg"], svgSprites);
+  watch(["app/html/**/*.html"], htmlInclude);
 }
 
 exports.styles = styles;
 exports.scripts = scripts;
+exports.htmlInclude = htmlInclude;
 exports.browsersync = browsersync;
 exports.watching = watching;
 exports.images = images;
 exports.cleanDist = cleanDist;
+exports.svgSprites = svgSprites;
 exports.build = series(cleanDist, images, build);
 
-exports.default = parallel(styles, scripts, browsersync, watching);
+exports.default = parallel(
+  htmlInclude,
+  styles,
+  scripts,
+  browsersync,
+  watching,
+  svgSprites
+);

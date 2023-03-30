@@ -1,0 +1,175 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background-color: $c-sliver-100;
+  padding: size(60, 0) 0;
+  border-bottom: 1px solid transparent;
+  transition: padding 0.3s linear, border-color 0.3s linear;
+
+  @include mq(phone) {
+    padding: 10px 0;
+  }
+
+  &.sticky {
+    border-color: $c-orange-900;
+    padding: 15px 0;
+  }
+
+  @at-root .lock {
+    overflow: hidden;
+
+    .header {
+      &::before {
+        @include mq(tablet) {
+          opacity: 1;
+          visibility: visible;
+          z-index: 10;
+        }
+      }
+    }
+  }
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: -100;
+    transition: opacity 0.3s linear;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    @include mq("tablet-2") {
+      gap: 20px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__btn {
+    &:hover {
+      .btn-counter {
+        color: $c-orange-900;
+        background-color: $c-white;
+      }
+    }
+    &:active {
+      .btn-counter {
+        color: $c-white;
+        background-color: $c-orange-900;
+      }
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-left: auto;
+  @include mq("tablet") {
+    display: none;
+  }
+
+  &__link {
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    border-radius: 5px;
+    outline: 2px solid transparent;
+    transition: outline-color 0.3s linear, color 0.3s linear,
+      text-shadow 0.3s linear;
+
+    &:focus {
+      outline-color: rgba($c-orange-900, 0.7);
+    }
+
+    &:hover {
+      color: $c-orange-900;
+    }
+
+    &:active {
+      text-shadow: 2px 2px 5px rgba($c-dark, 0.5);
+      outline-color: transparent;
+      color: $c-dark;
+    }
+  }
+
+  &__link--active {
+    color: $c-orange-900;
+  }
+}
+
+.burger {
+  display: none;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  color: $c-darkBlue-900;
+  cursor: pointer;
+
+  @include mq("tablet") {
+    display: block;
+  }
+}
+
+.burger__line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transition: transform 0.3s ease-in-out;
+}
+
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+.burger::before {
+  top: 0;
+}
+
+.burger::after {
+  top: calc(100% - 2px);
+}
+
+.burger--active .burger__line {
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.burger--active::before {
+  transform: rotate(45deg);
+  top: 50%;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+.burger--active::after {
+  transform: rotate(-45deg);
+  top: 50%;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}

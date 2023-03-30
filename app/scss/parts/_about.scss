@@ -1,0 +1,58 @@
+.about {
+  min-height: size(585, 462);
+  display: flex;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left calc((100vw - 1030px) / 2) center;
+
+  @include mq(desktop) {
+    background-position: left 12px center;
+  }
+
+  @include mq(tablet-2) {
+    background-color: rgba($c-white, 0.85);
+    background-blend-mode: overlay;
+  }
+
+  &__content {
+    margin: 0 size(70, 0) 0 auto;
+    padding: 23px 0;
+    max-width: 470px;
+  }
+
+  &__title {
+    text-align: start;
+    margin-bottom: 30px;
+  }
+
+  &__description {
+    font-size: size(20, 18);
+    line-height: 1.5;
+    opacity: 0.9;
+    margin-bottom: size(30, 20);
+    @include line-clamp(4);
+  }
+
+  &__items {
+    display: grid;
+    gap: size(20, 15);
+    margin-bottom: size(30, 20);
+  }
+
+  &__item {
+    justify-content: flex-start;
+    @include fz(24, 18);
+    color: $c-darkBlue-900;
+    gap: size(30, 10);
+    line-height: 1.5;
+    &::before {
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  &__btn {
+    padding: 12px 32px;
+  }
+}
