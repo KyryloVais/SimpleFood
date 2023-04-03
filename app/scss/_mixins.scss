@@ -3,13 +3,6 @@
   display: $display;
 }
 
-@mixin fz($max, $min, $wmax: 1920, $wmin: 375) {
-  font-size: calc(
-    #{$min}px + (#{$max} - #{$min}) *
-      ((100vw - #{$wmin}px) / (#{$wmax} - #{$wmin}))
-  );
-}
-
 @mixin r($width) {
   @media (max-width: #{$width}px) {
     @content;
@@ -31,26 +24,8 @@
 }
 
 @function size($max, $min, $wmax: 1920, $wmin: 375) {
-  $size: calc(
-    #{$min}px + (#{$max} - #{$min}) *
-      ((100vw - #{$wmin}px) / (#{$wmax} - #{$wmin}))
-  );
+  $size: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - #{$wmin}px) / (#{$wmax} - #{$wmin})));
   @return $size;
-}
-
-@mixin adaptive-image($width, $height) {
-  position: relative;
-  width: 100%;
-  padding-bottom: calc(($height / $width) * 100%);
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 }
 
 $breakpoints: (
